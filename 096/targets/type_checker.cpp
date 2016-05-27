@@ -621,12 +621,13 @@ void zu::type_checker::do_func_node(zu::func_node * const node, int lvl) {
         throw " already declared with other arguments";
     }
 
-    node->arguments()->accept(this, lvl+4);
+    if(node->arguments() != nullptr){       //ALTERADO
 
-    for(size_t i = 0; i < node->arguments()->size(); i++){
-      zu::variable_node *var = (zu::variable_node*) node->arguments()->node(i);
-      if(args.at(i)->name() != var->type()->name())
-        throw " already declared with different arguments type";
+      for(size_t i = 0; i < node->arguments()->size(); i++){
+        zu::variable_node *var = (zu::variable_node*) node->arguments()->node(i);
+        if(args.at(i)->name() != var->type()->name())
+          throw " already declared with different arguments type";
+      }
     }
 
     symbol->is_defined(true);  //CHECK THIS
