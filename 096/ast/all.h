@@ -26,33 +26,33 @@ namespace cdk {
 //---------------------------------------------------------------------------
 
 namespace zu {
-class continue_node; 
-class symmetry_node; 
-class variable_node; 
-class identifier_node; 
+class malloc_node; 
+class if_node; 
+class funcdeclar_node; 
+class identity_node; 
 class bloco_node; 
 class address_node; 
-class break_node; 
-class lvalue_node; 
-class func_call_node; 
+class variable_node; 
 class or_node; 
-class malloc_node; 
-class index_node; 
-class identity_node; 
-class func_node; 
-class printsemlinha_node; 
-class read_node; 
-class funcdeclar_node; 
-class return_node; 
-class evaluation_node; 
-class rvalue_node; 
-class if_else_node; 
-class and_node; 
-class assignment_node; 
 class printcomlinha_node; 
-class index_expression_node; 
+class identifier_node; 
+class return_node; 
+class func_call_node; 
+class continue_node; 
+class rvalue_node; 
+class and_node; 
+class break_node; 
 class for_node; 
-class if_node; 
+class lvalue_node; 
+class symmetry_node; 
+class index_node; 
+class read_node; 
+class assignment_node; 
+class printsemlinha_node; 
+class evaluation_node; 
+class index_expression_node; 
+class if_else_node; 
+class func_node; 
 
 } // namespace zu
 
@@ -95,33 +95,33 @@ class if_node;
 //     THESE ARE THE NODES DEFINED SPECIFICALLY FOR THIS APPLICATION
 //---------------------------------------------------------------------------
 
-#include "ast/continue_node.h"
-#include "ast/symmetry_node.h"
-#include "ast/variable_node.h"
-#include "ast/identifier_node.h"
+#include "ast/malloc_node.h"
+#include "ast/if_node.h"
+#include "ast/funcdeclar_node.h"
+#include "ast/identity_node.h"
 #include "ast/bloco_node.h"
 #include "ast/address_node.h"
-#include "ast/break_node.h"
-#include "ast/lvalue_node.h"
-#include "ast/func_call_node.h"
+#include "ast/variable_node.h"
 #include "ast/or_node.h"
-#include "ast/malloc_node.h"
-#include "ast/index_node.h"
-#include "ast/identity_node.h"
-#include "ast/func_node.h"
-#include "ast/printsemlinha_node.h"
-#include "ast/read_node.h"
-#include "ast/funcdeclar_node.h"
-#include "ast/return_node.h"
-#include "ast/evaluation_node.h"
-#include "ast/rvalue_node.h"
-#include "ast/if_else_node.h"
-#include "ast/and_node.h"
-#include "ast/assignment_node.h"
 #include "ast/printcomlinha_node.h"
-#include "ast/index_expression_node.h"
+#include "ast/identifier_node.h"
+#include "ast/return_node.h"
+#include "ast/func_call_node.h"
+#include "ast/continue_node.h"
+#include "ast/rvalue_node.h"
+#include "ast/and_node.h"
+#include "ast/break_node.h"
 #include "ast/for_node.h"
-#include "ast/if_node.h"
+#include "ast/lvalue_node.h"
+#include "ast/symmetry_node.h"
+#include "ast/index_node.h"
+#include "ast/read_node.h"
+#include "ast/assignment_node.h"
+#include "ast/printsemlinha_node.h"
+#include "ast/evaluation_node.h"
+#include "ast/index_expression_node.h"
+#include "ast/if_else_node.h"
+#include "ast/func_node.h"
 
 
 //---------------------------------------------------------------------------

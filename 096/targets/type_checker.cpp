@@ -586,7 +586,6 @@ void zu::type_checker::do_func_node(zu::func_node * const node, int lvl) {
   //FIXME
 
   std::vector<basic_type*> args;
-  const std::string &id = node->identifier();
 
   if(node->arguments()!=NULL) {
 
@@ -608,7 +607,7 @@ void zu::type_checker::do_func_node(zu::func_node * const node, int lvl) {
       throw "Return types does not match";
   }
 
-  std::shared_ptr<zu::symbol> symbol = _symtab.find(id);
+  std::shared_ptr<zu::symbol> symbol = _symtab.find(node->identifier());
   if(symbol != nullptr){
 
     if(symbol->is_defined()){
@@ -616,10 +615,10 @@ void zu::type_checker::do_func_node(zu::func_node * const node, int lvl) {
     }
 
     if(symbol->type()->name() != node->return_type()->name()){
-        throw id + " already declared with other return type";
+        throw " already declared with other return type";
     }
     if(symbol->function_args().size() != args.size()) {
-        throw id + " already declared with other arguments";
+        throw " already declared with other arguments";
     }
 
     node->arguments()->accept(this, lvl+4);
@@ -627,7 +626,7 @@ void zu::type_checker::do_func_node(zu::func_node * const node, int lvl) {
     for(size_t i = 0; i < node->arguments()->size(); i++){
       zu::variable_node *var = (zu::variable_node*) node->arguments()->node(i);
       if(args.at(i)->name() != var->type()->name())
-        throw id + " already declared with different arguments type";
+        throw " already declared with different arguments type";
     }
 
     symbol->is_defined(true);  //CHECK THIS
@@ -637,7 +636,7 @@ void zu::type_checker::do_func_node(zu::func_node * const node, int lvl) {
     s->is_defined(true);
     s->function_args(args);
     s->is_var(false);
-    _symtab.insert(id, symbol);
+    _symtab.insert(node->identifier(), s);
   }
 }
 

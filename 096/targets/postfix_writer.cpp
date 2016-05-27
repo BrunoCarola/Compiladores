@@ -21,8 +21,15 @@ void zu::postfix_writer::do_sequence_node(cdk::sequence_node * const node, int l
 
 void zu::postfix_writer::do_integer_node(cdk::integer_node * const node, int lvl) {
   CHECK_TYPES(_compiler, _symtab, node);
-
-  _pf.INT(node->value()); // push an integer
+  
+  if(_current_function != nullptr){  
+    _pf.INT(node->value()); // push an integer
+  }
+  else{
+    _pf.ALIGN();
+    _pf.LABEL(*_current_id);
+    _pf.CONST(node->value());
+  }
 }
 
 void zu::postfix_writer::do_string_node(cdk::string_node * const node, int lvl) {
@@ -306,7 +313,7 @@ void zu::postfix_writer::do_printcomlinha_node(zu::printcomlinha_node * const no
   else if (node->argument()->type()->name() == basic_type::TYPE_STRING) {
     _pf.CALL("prints"); //PRINT STRING VALUE
     _pf.TRASH(4); // DELETE VALUE
-    _pf.EXTERN("prtins");
+    _pf.EXTERN("prints");
   } 
 
   else if (node->argument()->type()->name() == basic_type::TYPE_DOUBLE) {
@@ -340,7 +347,7 @@ void zu::postfix_writer::do_printsemlinha_node(zu::printsemlinha_node * const no
   else if (node->argument()->type()->name() == basic_type::TYPE_STRING) {
     _pf.CALL("prints"); //PRINT STRING
     _pf.TRASH(4); //DELETE VALUE
-    _pf.EXTERN("prtins");
+    _pf.EXTERN("prints");
   } 
 
   else if (node->argument()->type()->name() == basic_type::TYPE_DOUBLE) {
